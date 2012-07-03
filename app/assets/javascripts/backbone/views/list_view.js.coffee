@@ -3,6 +3,11 @@ class Backbonelists.Views.ListView extends Backbone.View
 
 	initialize: ->
 		@$list = null
+		@syncsInProgress = 0
+
+		@collection.each (model) =>
+			model.on 'sync:start', @onSyncStart
+			model.on 'sync:end', @onSyncEnd
 
 	render: =>
 		$(@el).html(@template())
@@ -49,5 +54,17 @@ class Backbonelists.Views.ListView extends Backbone.View
 			.filter((model) -> model.hasChanged("order"))
 			.map((model) -> model.get('title'))
 			.value()
+
+	onSyncStart: =>
+		if @syncsInProgress == 0
+			@$list.sortable('disable')
+			@$list.fadeTo(15, 0.8)
+		@syncsInProgress++
+
+	onSyncEnd: =>
+		@syncsInProgress--
+		if @syncsInProgress == 0
+			@$list.sortable('enable')
+			@$list.fadeTo(15, 1.0)
 
 
