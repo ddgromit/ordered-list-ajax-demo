@@ -1,9 +1,9 @@
 $ ->
 	items = new Backbonelists.Collections.ItemsCollection()
 
-	$.each [1,2,3], (i,v) ->
+	$.each [0..20], (i,v) ->
 		item = new Backbonelists.Models.Item
-			title: ["First", "Second", "Third"][i]
+			title: "Item #{i}"
 			order: v
 
 		items.add item
