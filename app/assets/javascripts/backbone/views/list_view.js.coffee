@@ -36,7 +36,7 @@ class Backbonelists.Views.ListView extends Backbone.View
 	updateOrdersFromDom: ->
 		models = @orderedModelsFromDom()
 		_(models).each (model,i) ->
-			model.set("order",i)
+			model.set({"order":i})
 
 	_orderFromAttrs: ->
 		console.log @collection.chain()
