@@ -11,3 +11,5 @@ class Backbonelists.Views.ListView extends Backbone.View
 				model:item
 			view.render()
 			$list.append(view.el)
+
+		$(".list").sortable();
