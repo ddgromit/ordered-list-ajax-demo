@@ -8,4 +8,8 @@ $ ->
 
 		items.add item
 
-	
+	view = new Backbonelists.Views.ListView
+		collection: items
+		el: $("#list-container")
+
+	view.render()
