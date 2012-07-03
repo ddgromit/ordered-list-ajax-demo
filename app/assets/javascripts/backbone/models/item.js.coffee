@@ -8,6 +8,9 @@ class Backbonelists.Models.Item extends Backbone.Model
 	initialize: ->
 		@on 'change:order', => @save()
 
+	toJSON: ->
+		_(super()).pick('id','title','order')
+
 
 class Backbonelists.Collections.ItemsCollection extends Backbone.Collection
 	model: Backbonelists.Models.Item

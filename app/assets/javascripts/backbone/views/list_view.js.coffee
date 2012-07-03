@@ -9,7 +9,7 @@ class Backbonelists.Views.ListView extends Backbone.View
 
 		@$list = $(@el).find(".list")
 		@$list.empty()
-		@collection.each (item) =>
+		_(@collection.sortBy((m) -> m.get('order'))).each (item) =>
 			view = new Backbonelists.Views.ItemView
 				model:item
 			view.render()

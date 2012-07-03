@@ -1,4 +1,6 @@
 Backbonelists::Application.routes.draw do
+  resources :items
+
   get "demo/ordering"
 
   # The priority is based upon order of creation:
